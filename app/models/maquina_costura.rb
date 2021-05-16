@@ -1,0 +1,2 @@
+class MaquinaCostura < ApplicationRecord
+end

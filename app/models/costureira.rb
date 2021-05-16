@@ -1,0 +1,2 @@
+class Costureira < ApplicationRecord
+end

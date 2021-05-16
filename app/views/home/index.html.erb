@@ -1,0 +1,17 @@
+<div class="container">
+  <% if notice %>
+    <p class="alert alert-success"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p class="alert alert-danger"><%= alert %></p>
+  <% end %>
+  <hr/>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Bem vindo, <b><%= current_usuario.nome %></b> !</h1>
+      <p class="lead">Aqui vai ser a dashboard.</p>
+    </div>
+  </div>
+</div>
+<script>
+</script>

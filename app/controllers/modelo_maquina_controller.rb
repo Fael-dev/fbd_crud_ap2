@@ -1,0 +1,2 @@
+class ModeloMaquinaController < ApplicationController
+end

@@ -1,0 +1,27 @@
+<div class="container">
+  <table class="table">
+  <thead>
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">Nome</th>
+    <th scope="col">Idade</th>
+    <th scope="col">Sexo</th>
+    <th scope="col">Máquina de costura</th>
+    <th scope="col">Supervisor(a)</th>
+  </tr>
+  </thead>
+  <tbody>
+    <% @costureiras.each do | costureira | %>
+      <% maquina = MaquinaCostura.find_by(id: costureira.maquina_costura_id) %>
+      <tr>
+        <th scope="row"><%= costureira.id %></th>
+        <td><%= costureira.nome %></td>
+        <td><%= costureira.idade %></td>
+        <td><%= costureira.sexo %></td>
+        <td><%= maquina.nil? ? ' - ' : ModeloMaquina.find_by(id: maquina.modelo_maquina_id).descricao %></td>
+        <td><%= Usuario.find_by(id: costureira.usuario_id).nome %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

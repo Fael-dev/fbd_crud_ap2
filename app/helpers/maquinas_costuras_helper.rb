@@ -1,0 +1,2 @@
+module MaquinasCosturasHelper
+end

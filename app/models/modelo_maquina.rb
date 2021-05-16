@@ -1,0 +1,2 @@
+class ModeloMaquina < ApplicationRecord
+end

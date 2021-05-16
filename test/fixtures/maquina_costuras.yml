@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fabricante: MyString
+  modelo_maquina_id: 
+
+two:
+  fabricante: MyString
+  modelo_maquina_id: 

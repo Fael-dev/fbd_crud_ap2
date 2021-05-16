@@ -1,0 +1,2 @@
+class MaquinasCosturasController < ApplicationController
+end
