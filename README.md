@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Projeto da faculdade - fundamento de banco de dados.
 
-Things you may want to cover:
+Requisitos:
 
-* Ruby version
+* Postgresql 10(ou superior)
 
-* System dependencies
+* Ruby 2.6.4
 
-* Configuration
+* Rails 5.26
 
-* Database creation
+Executar projeto:
 
-* Database initialization
+* bundle install
 
-* How to run the test suite
+* rails db:create db:migrate db:seed
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* rails s
