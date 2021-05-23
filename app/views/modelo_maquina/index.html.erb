@@ -1,0 +1,20 @@
+<div class="container">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Descrição</th>
+      <th scope="col">Cadastrado em</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @modelos_maquinas.each do | modelo | %>
+      <tr>
+        <th scope="row"><%= modelo.id %></th>
+        <td><%= modelo.descricao %></td>
+        <td><%= modelo.created_at.strftime('%d/%m/%Y') %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

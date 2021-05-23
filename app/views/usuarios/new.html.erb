@@ -1,0 +1,30 @@
+<% @usuario.errors.full_messages.each do |msg| %>
+  <div class="alert alert-danger" role="alert">
+    <%= msg %>
+  </div>
+<% end %>
+<%= form_with(model: @usuario, class: 'form-horizontal', local: true, id: "afiliacao_form") do |form| %>
+  <div class="mb-3">
+    <label for="nome" class="form-label">Nome</label>
+    <%= form.text_field :nome, class: "form-control", id: "nome", type: "text", :required => true %>
+  </div>
+  <div class="mb-3">
+    <label for="nome" class="form-label">Email</label>
+    <%= form.text_field :email, class: "form-control", id: "nome", type: "email", :required => true %>
+    <div id="emailHelp" class="form-text">Digite um email válido com @ e domínio.</div>
+  </div>
+  <div class="mb-3">
+    <label for="tipo" class="form-label">Email</label>
+    <%= form.select(:tipo, [['ADMIN', 'ADMIN'], ['GERENTE', 'GERENTE'], ['SUPERVISOR(A)', 'SUPERVISOR']], { include_blank: false }, {class: 'form-control valid', id: "tipo"}) %>
+    <div id="emailHelp" class="form-text">Selecione o tipo de usuário.</div>
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Senha</label>
+    <%= form.text_field :password, class: "form-control", id: "password", type: "password", :required => true %>
+  </div>
+  <div class="mb-3">
+    <label for="password_confirmation" class="form-label">Confirme a senha</label>
+    <%= form.text_field :password_confirmation, class: "form-control", id: "password_confirmation", type: "password", :required => true %>
+  </div>
+  <button type="submit" class="btn btn-primary">Cadastrar</button>
+<% end %>

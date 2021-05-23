@@ -1,0 +1,30 @@
+<% if flash[:notice] %>
+  <div class="alert alert-info" role="alert">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+<%= link_to 'Novo usuário', new_usuario_path, class: "btn btn-primary" %>
+<div class="container">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Email</th>
+      <th scope="col">Perfil</th>
+      <th scope="col">Criado em</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @usuarios.each do | usuario | %>
+      <tr>
+        <th scope="row"><%= usuario.id %></th>
+        <td><%= usuario.nome %></td>
+        <td><%= usuario.email %></td>
+        <td><%= usuario.tipo %></td>
+        <td><%= usuario.created_at.strftime('%d/%m/%Y') %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

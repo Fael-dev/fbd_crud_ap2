@@ -1,11 +1,11 @@
 <%= nav_bar brand: "Home", brand_link: root_url do %>
   <%= menu_group do %>
     <% if current_usuario.tipo == 'ADMIN' or current_usuario.tipo == 'GERENTE' %>
-      <%= menu_item "Usuários", root_url %>
+      <%= menu_item "Usuários", usuarios_path %>
     <% end %>
     <%= menu_item "Costureiras", costureiras_path %>
-    <%= menu_item "Máquinas de costura", root_url %>
-    <%= menu_item "Modelos de máquinas", root_url %>
+    <%= menu_item "Máquinas de costura", maquinas_costuras_path %>
+    <%= menu_item "Modelos de máquinas", modelo_maquina_index_path %>
     <%= menu_item "Sair", home_sair_path %>
   <% end %>
 <% end %>

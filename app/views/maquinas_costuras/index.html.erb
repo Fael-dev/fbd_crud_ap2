@@ -1,0 +1,23 @@
+<div class="container">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Fabricante</th>
+      <th scope="col">Modelo</th>
+      <th scope="col">Cadastrado em</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @marquinas_costura.each do | maquina | %>
+      <tr>
+        <% modelo_maquina = ModeloMaquina.find_by(id: maquina.modelo_maquina_id) %>
+        <th scope="row"><%= maquina.id %></th>
+        <td><%= maquina.fabricante %></td>
+        <td><%= !modelo_maquina.nil? ? modelo_maquina.descricao : ' - ' %></td>
+        <td><%= maquina.created_at.strftime('%d/%m/%Y') %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
