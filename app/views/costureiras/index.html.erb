@@ -1,27 +1,50 @@
+<% if flash[:notice] %>
+  <div class="alert alert-info" role="alert">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
 <div class="container">
-  <table class="table">
-  <thead>
-  <tr>
-    <th scope="col">ID</th>
-    <th scope="col">Nome</th>
-    <th scope="col">Idade</th>
-    <th scope="col">Sexo</th>
-    <th scope="col">Máquina de costura</th>
-    <th scope="col">Supervisor(a)</th>
-  </tr>
-  </thead>
-  <tbody>
-    <% @costureiras.each do | costureira | %>
-      <% maquina = MaquinaCostura.find_by(id: costureira.maquina_costura_id) %>
-      <tr>
-        <th scope="row"><%= costureira.id %></th>
-        <td><%= costureira.nome %></td>
-        <td><%= costureira.idade %></td>
-        <td><%= costureira.sexo %></td>
-        <td><%= maquina.nil? ? ' - ' : ModeloMaquina.find_by(id: maquina.modelo_maquina_id).descricao %></td>
-        <td><%= Usuario.find_by(id: costureira.usuario_id).nome %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="row">
+    <div class="col-sm-12">
+      <%= link_to 'Novo costureira', new_costureira_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+    <hr style="margin: 20px 0px"/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Idade</th>
+          <th scope="col">Sexo</th>
+          <th scope="col">Máquina de costura</th>
+          <th scope="col">Supervisor(a)</th>
+          <th scope="col">Editar</th>
+          <th scope="col">Deletar</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @costureiras.each do | costureira | %>
+          <% maquina = MaquinaCostura.find_by(id: costureira.maquina_costura_id) %>
+          <tr>
+            <th scope="row"><%= costureira.id %></th>
+            <td><%= costureira.nome %></td>
+            <td><%= costureira.idade %></td>
+            <td><%= costureira.sexo %></td>
+            <td><%= maquina.nil? ? ' - ' : ModeloMaquina.find_by(id: maquina.modelo_maquina_id).descricao %></td>
+            <td><%= Usuario.find_by(id: costureira.usuario_id).nome %></td>
+            <td><%= link_to "Editar", edit_costureira_path(costureira), class:"btn btn-default" %></td>
+            <td><%= button_to "Remover", costureira, method: :delete, class:"btn btn-danger", data:{confirm:"Tem certeza que deseja remover a costureira #{costureira.nome}?"} %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   devise_for :usuarios
 
-  resources :costureiras, only: %i[destroy edit index new create]
-  resources :maquinas_costuras, only: %i[destroy edit index new create]
-  resources :modelo_maquina, only: %i[destroy edit index new create]
-  resources :usuarios, only: %i[destroy edit index new create]
+  resources :costureiras, only: %i[destroy edit index new create update]
+  resources :maquinas_costuras, only: %i[destroy edit index new create update]
+  resources :modelo_maquina, only: %i[destroy edit index new create update]
+  resources :usuarios, only: %i[destroy edit index new create update]
 
   get "home/sair", to: "home#logout"
 

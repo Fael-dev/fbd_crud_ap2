@@ -1,23 +1,44 @@
+<% if flash[:notice] %>
+  <div class="alert alert-info" role="alert">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
 <div class="container">
-  <table class="table">
-    <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Fabricante</th>
-      <th scope="col">Modelo</th>
-      <th scope="col">Cadastrado em</th>
-    </tr>
-    </thead>
-    <tbody>
-    <% @marquinas_costura.each do | maquina | %>
-      <tr>
-        <% modelo_maquina = ModeloMaquina.find_by(id: maquina.modelo_maquina_id) %>
-        <th scope="row"><%= maquina.id %></th>
-        <td><%= maquina.fabricante %></td>
-        <td><%= !modelo_maquina.nil? ? modelo_maquina.descricao : ' - ' %></td>
-        <td><%= maquina.created_at.strftime('%d/%m/%Y') %></td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+  <div class="row">
+    <div class="col-sm-12">
+      <%= link_to 'Nova máquina', new_maquinas_costura_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <hr style="margin: 20px 0px"/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Fabricante</th>
+          <th scope="col">Modelo</th>
+          <th scope="col">Cadastrado em</th>
+          <th scope="col">Editar</th>
+          <th scope="col">Deletar</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @marquinas_costura.each do | maquina | %>
+          <tr>
+            <% modelo_maquina = ModeloMaquina.find_by(id: maquina.modelo_maquina_id) %>
+            <th scope="row"><%= maquina.id %></th>
+            <td><%= maquina.fabricante %></td>
+            <td><%= !modelo_maquina.nil? ? modelo_maquina.descricao : ' - ' %></td>
+            <td><%= maquina.created_at.strftime('%d/%m/%Y') %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

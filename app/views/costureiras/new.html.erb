@@ -1,0 +1,51 @@
+<% @costureira.errors.full_messages.each do |msg| %>
+  <div class="alert alert-danger" role="alert">
+    <%= msg %>
+  </div>
+<% end %>
+<%= form_for @costureira do |form| %>
+  <div class="row">
+    <div class="col-sm-8">
+      <h3>Cadastro de costureira</h3>
+      <hr style="margin: 20px 0px"/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="form-group">
+        <%= form.label :nome  %>
+        <%= form.text_field :nome, class:"form-control", requerid: true %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <%= form.label :sexo  %>
+        <%= form.text_field :sexo, class:"form-control", requerid: true  %>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <%= form.label :idade  %>
+        <%= form.number_field :idade, class:"form-control", requerid: true  %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <%= form.label :usuario_id  %>
+        <%= form.collection_select :usuario_id, Usuario.all, :id, :nome, {},class:"form-control"  %>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <%= form.label :maquina_costura_id  %>
+        <%= form.collection_select :maquina_costura_id, MaquinaCostura.all, :id, :fabricante, {},class:"form-control"  %>
+      </div>
+    </div>
+  </div>
+
+  <%= form.submit 'Cadastrar', class:"btn btn-primary"  %>
+<% end  %>

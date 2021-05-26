@@ -1,0 +1,30 @@
+<% @maquina_costura.errors.full_messages.each do |msg| %>
+<div class="alert alert-danger" role="alert">
+    <%= msg %>
+</div>
+<% end %>
+<%= form_for @maquina_costura do |form| %>
+<div class="row">
+    <div class="col-sm-8">
+        <% modelo = ModeloMaquina.find_by(id: @maquina_costura.modelo_id) %>
+        <h3>Atualizar de máquina - <%= !modelo.nil? ? modelo.descricao : @maquina_costura.fabricante %></h3>
+        <hr style="margin: 20px 0px"/>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="form-group">
+            <%= form.label :fabricante  %>
+            <%= form.text_field :fabricante, class:"form-control", requerid: true %>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+            <%= form.label :modelo_id  %>
+            <%= form.collection_select :modelo_id, ModeloMaquina.all, :id, :descricao, {},class:"form-control"  %>
+        </div>
+    </div>
+</div>
+
+<%= form.submit 'Cadastrar', class:"btn btn-primary"  %>
+<% end  %>

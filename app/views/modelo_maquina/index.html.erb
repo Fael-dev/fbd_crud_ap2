@@ -1,20 +1,41 @@
+<% if flash[:notice] %>
+  <div class="alert alert-info" role="alert">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
 <div class="container">
-  <table class="table">
-    <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Descrição</th>
-      <th scope="col">Cadastrado em</th>
-    </tr>
-    </thead>
-    <tbody>
-    <% @modelos_maquinas.each do | modelo | %>
-      <tr>
-        <th scope="row"><%= modelo.id %></th>
-        <td><%= modelo.descricao %></td>
-        <td><%= modelo.created_at.strftime('%d/%m/%Y') %></td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+  <div class="row">
+    <div class="col-sm-12">
+      <%= link_to 'Novo modelo', new_usuario_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <hr style="margin: 20px 0px"/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Descrição</th>
+          <th scope="col">Cadastrado em</th>
+          <th scope="col">Editar</th>
+          <th scope="col">Deletar</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @modelos_maquinas.each do | modelo | %>
+          <tr>
+            <th scope="row"><%= modelo.id %></th>
+            <td><%= modelo.descricao %></td>
+            <td><%= modelo.created_at.strftime('%d/%m/%Y') %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
